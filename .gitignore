@@ -1,0 +1,7 @@
+*~
+__pycache__
+mypython
+*.code-workspace
+*.html
+.DS_Store
+*.pyc
