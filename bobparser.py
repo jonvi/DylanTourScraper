@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
-import os
 
 """Read HTML data from website specified by url.
 The url needs to be https://www.bobdylan.com/on-tour/.
