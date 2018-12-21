@@ -4,21 +4,39 @@ URL = "https://www.bobdylan.com/on-tour/"
 Example one line of the output: * 21 Jun [Bergen, Norway](https://www.ticketmaster.no/event/593577) - Koengen
 returns all concerts formatted in one string.
 """
+
+"""Add the ticket link. Needs to handle when link attribute isn't added, empty or provided.
+"""
+def addTicketLine(concert):
+    try:
+        if concert["tickets"]["href"] == "": # If the link is empty
+            line += URL
+        else:
+            line += concert["tickets"]["href"] # Use link provided
+    except KeyError, e: # # If official website haven't added link attribute
+        line += URL
+
+
+
 def format(concerts):
     lines = ""
     for concert in concerts:
-        if not concert["tickets"]["href"]: # Replace empty links with official on-tour link.
-            concert["tickets"]["href"] = URL
-
         line = "* "
         line += concert["date"]["date"][:-5]
-        line += " ["
-        line += concert["city"]["city"]
-        line += "]("
-        line += concert["tickets"]["href"]
-        line += ")"
         line += " - "
+        line += concert["city"]["city"]
+        line += " - "
+        line += "["
         line += concert["venue"]["venue"]
-
+        line += "]("
+        try:
+            if concert["tickets"]["href"] == "":
+                line += "https://www.bobdylan.com/on-tour/"
+            else:
+                line += concert["tickets"]["href"]
+        except KeyError, e:
+            line += "https://www.bobdylan.com/on-tour/"
+        line += ")"
         lines += line + "\n"
     return lines
+

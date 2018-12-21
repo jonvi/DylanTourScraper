@@ -1,13 +1,14 @@
 from bs4 import BeautifulSoup
-from urllib.request import Request, urlopen
+import requests
+
+URL = "https://www.bobdylan.com/on-tour/"
 
 """Read HTML data from website specified by url.
 The url needs to be https://www.bobdylan.com/on-tour/.
 Return the BeautifulSoup object.
 """
 def readWebsite(url):
-    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    webpage = urlopen(req).read()
+    webpage = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}).text
     return BeautifulSoup(webpage, features="html.parser")
 
 """Read HTML data from file for offline testing.
@@ -15,20 +16,20 @@ Url needs to be on the form "file://" + dir_path + "/file.html.
 Return the BeautifulSoup object.
 """
 def readFile(url):
-    webpage = urlopen(url).read()
+    webpage = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}).text
     return BeautifulSoup(webpage, features="html.parser")
 
 """Take an HTML attribute and format it to a JSON-like format.
 """
 def sift(atr):
     field_type = atr.get("class")[0]
-    if field_type == "tickets" and atr.get("data-url") != "None" and atr.getText() == "Tickets":
+    if field_type == "tickets" and atr.get("data-url") is not "None" and atr.getText() == "Tickets":
         return {"href": atr.get("data-url").replace(" ", "")}
-    elif field_type == "venue" and atr.get("href") != "None":
+    elif field_type == "venue" and atr.get("href") is not "None":
         return {field_type: atr.getText(), "href": atr.get("href")}
-    elif field_type == "city" and atr.get("href") != "None":
+    elif field_type == "city" and atr.get("href") is not "None":
         return {field_type: atr.getText(), "href": atr.get("href")}
-    elif field_type == "date" and atr.get("href") != "None":
+    elif field_type == "date" and atr.get("href") is not "None":
         return {field_type: atr.getText(), "href": atr.get("href")}
     return None
 
@@ -37,7 +38,7 @@ website is a boolean that indicates if data should be retreived from website (Tr
 website default value is True.
 Return concerts in JSON-like format.
 """
-def scrape(url, website = True):
+def scrape(url, website):
     # Read from website or file.
     if website:
         soup = readWebsite(url)
@@ -50,9 +51,10 @@ def scrape(url, website = True):
     # Sift attributes of each concert.
     res = []
     for concert in concerts:
-        crt = {}
+        cnrt = {}
         for atr in concert:
-            if sift(atr) != None:
-                crt[atr.get("class")[0]] = sift(atr)
-        res.append(crt)
+            sifted = sift(atr)
+            if sifted is not None:
+                cnrt[atr.get("class")[0]] = sifted
+        res.append(cnrt)
     return res[1:]

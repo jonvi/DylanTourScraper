@@ -5,3 +5,5 @@ mypython
 *.html
 .DS_Store
 *.pyc
+.vscode/
+Pipfile
