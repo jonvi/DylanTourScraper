@@ -1,11 +1,11 @@
 
 # The Bob Dylan Tour Scraper
 ### Description
-The purpose of the program is to scrape the tour date, location, venue and ticket link.
-Then format the information to a subreddit sidebar.
+The purpose of the program is to scrape the tour date, location, venue and ticket link off the [official Bob Dylan website](https://www.bobdylan.com/on-tour/).
+Then format the information to a subreddit sidebar in a markdown format.
 
 ### How to Run the Scraper
-Simply execute bobrunner.py with Python2.x and [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [requests](http://docs.python-requests.org/en/master/) installed.
+Simply run bobrunner.py with Python2.x and [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [requests](http://docs.python-requests.org/en/master/) installed. The output will then be printed to the console.
 
 ### Example Output
 * 31 Mar - Dusseldorf, Germany - [Mitsubishi Electric Halle](https://www.ticketmaster.de/artist/bob-dylan-tickets/1607?cities=60055)
