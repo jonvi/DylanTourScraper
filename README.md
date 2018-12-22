@@ -26,4 +26,4 @@ Simply run bobrunner.py with Python2.x and [BeautifulSoup4](https://www.crummy.c
 * 12 Jul - London, England - [BST Hyde Park](https://www.axs.com/uk/events/357515/bob-dylan-and-neil-young-tickets/promop%20age/13931?skin=bst)
 * 14 Jul - Kilkenny, Ireland - [Nowlan Park](https://www.ticketmaster.ie/promo/gxllqn)
 
-Notice that sometimes the official sites have not provided any link to a concert. In that case, the official tour website link is inserted instead.
+Notice that sometimes the official site has not provided any link to a concert. In that case, the official tour website link is inserted instead.
