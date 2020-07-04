@@ -8,7 +8,7 @@ Then format the information to a subreddit sidebar in a markdown format.
 Python2.x, [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [requests](http://docs.python-requests.org/en/master/). The libraries can be installed with `pip install -r requirements.txt`.
 
 ### How to Run the Scraper
-Simply run bobrunner.py with Python2.x and the output will then be printed to the console.
+Simply run bobrunner.py with Python3 and the output will then be printed to the console.
 
 ### Example Output
 * 31 Mar - Dusseldorf, Germany - [Mitsubishi Electric Halle](https://www.ticketmaster.de/artist/bob-dylan-tickets/1607?cities=60055)
